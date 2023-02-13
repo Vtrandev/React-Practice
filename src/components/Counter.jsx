@@ -1,93 +1,96 @@
-import React, {useState} from 'react';
-import Modal from './Modal';
+import React, { useState } from "react";
+import Modal from "./Modal";
 
 function Counter() {
+  // ['+', '-']
+  const [arr, setArr] = useState([])
 
-    const [numCount, setNumCount] = useState(0)
+  function addPlus() {
+    setArr((prevArr) => [...prevArr, "+"]);
+  }
 
-    return (
-        <>
-        <div className="counter">
-        <button onClick={() => setNumCount(numCount-1)}>-</button>
-        {numCount}
-        <button onClick={() => setNumCount(numCount+1)}>+</button>
-        </div>
-        </>
-    )
+  function addMinus() {
+    setArr((prevArr) => [...prevArr, '-'])
+  }
 
+  return (
+    <div className="counter">
+      <button className="counter" onClick={addMinus}>-</button>
+      <button className="counter" onClick={addPlus}>+</button>
+      {arr}
+    </div>
+  );
 
+  // // ['+', '-', '+']
+  // const [arr, setArr] = useState([])
 
+  // function addPlus() {
+  //     setArr(prevArr => [ ...prevArr, "+"])
+  // }
 
-    // // ['+', '-', '+']
-    // const [arr, setArr] = useState([])
+  // function addMinus() {
+  //     setArr(prevArr => [ ...prevArr, "-"])
+  // }
 
-    // function addPlus() {
-    //     setArr(prevArr => [ ...prevArr, "+"])
-    // }
+  // return (
+  //     <div>
+  //     <button onClick={addMinus}>-</button>
+  //     <button onClick={addPlus}>+</button>
+  //     {arr.toString()}
+  //     </div>
+  // );
 
-    // function addMinus() {
-    //     setArr(prevArr => [ ...prevArr, "-"])
-    // }
+  // --------------------------------------------------
 
-    // return (
-    //     <div>
-    //     <button onClick={addMinus}>-</button>
-    //     <button onClick={addPlus}>+</button>
-    //     {arr.toString()}
-    //     </div>
-    // );
+  // const [cart, setCart] = useState({
+  //     item: " Apple",
+  //     quantity: 0,
+  // });
 
-    // --------------------------------------------------
+  // function addApple() {
+  //     // 1. Use a callback to get the previous value
+  //     // 2. "..." to grab all previous properties' state
+  //     // 3. Only change the property that you need to change
+  //     setCart(prevCart => ({
+  //         ...prevCart,
+  //         quantity: prevCart.quantity + 1,
+  //     }))
+  // }
 
-    // const [cart, setCart] = useState({
-    //     item: " Apple",
-    //     quantity: 0,
-    // });
+  // function minusApple() {
+  //     setCart(prevCart => ({
+  //         ...prevCart,
+  //         quantity: prevCart.quantity - 1,
+  //     }))
+  // }
 
-    // function addApple() {
-    //     // 1. Use a callback to get the previous value
-    //     // 2. Spread out all the properties of the prev state
-    //     // 3. Only change the property that you need to change
-    //     setCart(prevCart => ({
-    //         ...prevCart,
-    //         quantity: prevCart.quantity + 1,
-    //     }))
-    // }
+  // return (
+  //     <div>
+  //     <button onClick={minusApple}>-</button>
+  //     {cart.quantity}{cart.item}
+  //     <button onClick={addApple}>+</button>
+  //     </div>
+  // );
+  // --------------------------------------------------
 
-    // function minusApple() {
-    //     setCart(prevCart => ({
-    //         ...prevCart,
-    //         quantity: prevCart.quantity - 1,
-    //     }))
-    // }
+  // const [counter, setCounter] = useState(0)
+  // function countAdd(){
+  //     setCounter((prevCounter) => prevCounter + 1)
+  //     setCounter((prevCounter) => prevCounter + 1)
+  // }
 
-    // return (
-    //     <div>
-    //     <button onClick={minusApple}>-</button>
-    //     {cart.quantity}{cart.item}
-    //     <button onClick={addApple}>+</button>
-    //     </div>
-    // );
-    // --------------------------------------------------
+  // function countMinus() {
+  //     setCounter((prevCounter) => prevCounter - 1)
+  //     setCounter((prevCounter) => prevCounter - 1)
+  // }
 
-    // const [counter, setCounter] = useState(0)
-    // function countAdd(){
-    //     setCounter((prevCounter) => prevCounter + 1)
-    //     setCounter((prevCounter) => prevCounter + 1)
-    // }
-
-    // function countMinus() {
-    //     setCounter((prevCounter) => prevCounter - 1)
-    //     setCounter((prevCounter) => prevCounter - 1)
-    // }
-
-    // return (
-    //     <div>
-    //     <button onClick={countMinus}>-</button>
-    //     {counter}
-    //     <button onClick={countAdd}>+</button>
-    //     </div>
-    // );
+  // return (
+  //     <div>
+  //     <button onClick={countMinus}>-</button>
+  //     {counter}
+  //     <button onClick={countAdd}>+</button>
+  //     </div>
+  // );
 }
 
 export default Counter;

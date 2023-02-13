@@ -1,29 +1,34 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
-import User from "../components/User";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Users() {
-  const { username } = useParams();
-  const [user, setUser] = useState([]);
+  const [users, setUsers] = useState({});
+  const { usename } = useParams();
 
-  //"https://jsonplaceholder.typicode.com/users"
-
-  async function fetchUser() {
-    const {data} = await axios.get(`https://jsonplaceholder.typicode.com/users/${username}`);
-    setUser(data);
-}
+  async function main() {
+    const { data } = await axios.get(
+      `https://jsonplaceholder.typicode.com/users/${usename}`
+    );
+    console.log(data);
+    setUsers(data);
+  }
 
   useEffect(() => {
-    fetchUser()
+    main();
   }, []);
 
-  return <div>
-    <h1>{user.id}</h1>
-    <h1>{user.name}</h1>
-    <h1>{user.email}</h1>
-    <h1>{user.username}</h1>
-  </div>;
+  return (
+    <div>
+      <h1>{users.id}</h1>
+      <h1>{users.name}</h1>
+      <h1>{users.phone}</h1>
+      <h1>{users.email}</h1>
+      <h1>{users.username}</h1>
+      <h1>{users.website}</h1>
+      {/* <h1>{users.address}</h1> */}
+    </div>
+  );
 }
 
 export default Users;
